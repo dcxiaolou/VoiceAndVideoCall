@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_voice_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="语音通话"/>
+
+        <Button
+            android:id="@+id/btn_group_voice_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="多人语音通话"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_video_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="视频通话"/>
+
+        <Button
+            android:id="@+id/btn_group_video_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="多人视频通话"/>
+
+    </LinearLayout>
+
+</LinearLayout>
