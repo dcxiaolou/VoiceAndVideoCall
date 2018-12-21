@@ -13,9 +13,6 @@ import com.android.dcxiaolou.voiceandvideocall.GroupVideoCall.propeller.VideoInf
 import com.android.dcxiaolou.voiceandvideocall.GroupVideoCall.propeller.ui.ViewUtil;
 import com.android.dcxiaolou.voiceandvideocall.R;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,14 +20,14 @@ import java.util.Iterator;
 
 public class VideoViewAdapterUtil {
 
-    private final static Logger log = LoggerFactory.getLogger(VideoViewAdapterUtil.class);
+    //private final static Logger log = LoggerFactory.getLogger(VideoViewAdapterUtil.class);
 
     private static final boolean DEBUG = false;
 
     public static void composeDataItem1(final ArrayList<UserStatusData> users, HashMap<Integer, SurfaceView> uids, int localUid) {
         for (HashMap.Entry<Integer, SurfaceView> entry : uids.entrySet()) {
             if (DEBUG) {
-                log.debug("composeDataItem1 " + (entry.getKey() & 0xFFFFFFFFL) + " " + (localUid & 0xFFFFFFFFL) + " " + users.size() + " " + entry.getValue());
+                //log.debug("composeDataItem1 " + (entry.getKey() & 0xFFFFFFFFL) + " " + (localUid & 0xFFFFFFFFL) + " " + users.size() + " " + entry.getValue());
             }
             SurfaceView surfaceV = entry.getValue();
             surfaceV.setZOrderOnTop(false);
@@ -43,13 +40,13 @@ public class VideoViewAdapterUtil {
 
     private static void removeNotExisted(ArrayList<UserStatusData> users, HashMap<Integer, SurfaceView> uids, int localUid) {
         if (DEBUG) {
-            log.debug("removeNotExisted all " + uids + " " + users.size());
+            //log.debug("removeNotExisted all " + uids + " " + users.size());
         }
         Iterator<UserStatusData> it = users.iterator();
         while (it.hasNext()) {
             UserStatusData user = it.next();
             if (DEBUG) {
-                log.debug("removeNotExisted " + user + " " + localUid);
+                //log.debug("removeNotExisted " + user + " " + localUid);
             }
             if (uids.get(user.mUid) == null && user.mUid != localUid) {
                 it.remove();
@@ -144,7 +141,7 @@ public class VideoViewAdapterUtil {
                 i = null;
             }
             if (DEBUG) {
-                log.debug("composeDataItem " + users + " " + entry + " " + (localUid & 0XFFFFFFFFL) + " " + s + " " + v + " " + i + " " + local + " " + (uid & 0XFFFFFFFFL) + " " + (uidExcepted & 0XFFFFFFFFL));
+                //log.debug("composeDataItem " + users + " " + entry + " " + (localUid & 0XFFFFFFFFL) + " " + s + " " + v + " " + i + " " + local + " " + (uid & 0XFFFFFFFFL) + " " + (uidExcepted & 0XFFFFFFFFL));
             }
             searchUidsAndAppend(users, entry, localUid, s, v, i);
         }
@@ -154,7 +151,7 @@ public class VideoViewAdapterUtil {
 
     public static void renderExtraData(Context context, UserStatusData user, VideoUserStatusHolder myHolder) {
         if (DEBUG) {
-            log.debug("renderExtraData " + user + " " + myHolder);
+            //log.debug("renderExtraData " + user + " " + myHolder);
         }
 
         if (user.mStatus != null) {

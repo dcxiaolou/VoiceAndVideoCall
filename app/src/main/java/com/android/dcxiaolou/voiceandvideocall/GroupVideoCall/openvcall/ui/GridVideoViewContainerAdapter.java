@@ -10,18 +10,15 @@ import android.view.WindowManager;
 
 import com.android.dcxiaolou.voiceandvideocall.GroupVideoCall.propeller.UserStatusData;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.HashMap;
 
 
 public class GridVideoViewContainerAdapter extends VideoViewAdapter {
-    private final static Logger log = LoggerFactory.getLogger(GridVideoViewContainerAdapter.class);
+   // private final static Logger log = LoggerFactory.getLogger(GridVideoViewContainerAdapter.class);
 
     public GridVideoViewContainerAdapter(Activity activity, int localUid, HashMap<Integer, SurfaceView> uids, VideoViewEventListener listener) {
         super(activity, localUid, uids, listener);
-        log.debug("GridVideoViewContainerAdapter " + (mLocalUid & 0xFFFFFFFFL));
+        //log.debug("GridVideoViewContainerAdapter " + (mLocalUid & 0xFFFFFFFFL));
     }
 
     @Override
@@ -68,7 +65,7 @@ public class GridVideoViewContainerAdapter extends VideoViewAdapter {
         VideoViewAdapterUtil.composeDataItem(mUsers, uids, localUid, status, volume, mVideoInfo);
 
         notifyDataSetChanged();
-        log.debug("notifyUiChanged " + (mLocalUid & 0xFFFFFFFFL) + " " + (localUid & 0xFFFFFFFFL) + " " + uids + " " + status + " " + volume);
+        //log.debug("notifyUiChanged " + (mLocalUid & 0xFFFFFFFFL) + " " + (localUid & 0xFFFFFFFFL) + " " + uids + " " + status + " " + volume);
     }
 
     @Override

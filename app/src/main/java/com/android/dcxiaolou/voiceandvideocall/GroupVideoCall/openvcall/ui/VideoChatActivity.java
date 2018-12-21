@@ -37,9 +37,6 @@ import com.android.dcxiaolou.voiceandvideocall.GroupVideoCall.propeller.preproce
 import com.android.dcxiaolou.voiceandvideocall.GroupVideoCall.propeller.ui.RtlLinearLayoutManager;
 import com.android.dcxiaolou.voiceandvideocall.R;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,7 +51,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
 
     public static final int LAYOUT_TYPE_DEFAULT = 0;
     public static final int LAYOUT_TYPE_SMALL = 1;
-    private final static Logger log = LoggerFactory.getLogger(VideoChatActivity.class);
+    //private final static Logger log = LoggerFactory.getLogger(VideoChatActivity.class);
     // should only be modified under UI thread
     private final HashMap<Integer, SurfaceView> mUidsList = new HashMap<>(); // uid = 0 || uid == EngineConfig.mUid
     public int mLayoutType = LAYOUT_TYPE_DEFAULT;
@@ -103,7 +100,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
         mGridVideoViewContainer.setItemEventHandler(new VideoViewEventListener() {
             @Override
             public void onItemDoubleClick(View v, Object item) {
-                log.debug("onItemDoubleClick " + v + " " + item + " " + mLayoutType);
+                //log.debug("onItemDoubleClick " + v + " " + item + " " + mLayoutType);
 
                 if (mUidsList.size() < 2) {
                     return;
@@ -145,7 +142,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
     }
 
     public void onClickHideIME(View view) {
-        log.debug("onClickHideIME " + view);
+        //log.debug("onClickHideIME " + view);
 
         closeIME(findViewById(R.id.msg_content));
 
@@ -188,7 +185,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
 
         if (mDataStreamId < 0) {
             String errorMsg = "Create data stream error happened " + mDataStreamId;
-            log.warn(errorMsg);
+            //log.warn(errorMsg);
             showLongToast(errorMsg);
             return;
         }
@@ -234,7 +231,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
     }
 
     public void onBtn0Clicked(View view) {
-        log.info("onBtn0Clicked " + view + " " + mVideoMuted + " " + mAudioMuted);
+        //log.info("onBtn0Clicked " + view + " " + mVideoMuted + " " + mAudioMuted);
         showMessageEditContainer();
     }
 
@@ -272,7 +269,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
     }
 
     public void onCustomizedFunctionClicked(View view) {
-        log.info("onCustomizedFunctionClicked " + view + " " + mVideoMuted + " " + mAudioMuted + " " + mAudioRouting);
+        //log.info("onCustomizedFunctionClicked " + view + " " + mVideoMuted + " " + mAudioMuted + " " + mAudioRouting);
         if (mVideoMuted) {
             onSwitchSpeakerClicked();
         } else {
@@ -306,12 +303,12 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
     }
 
     public void onEndCallClicked(View view) {
-        log.info("onEndCallClicked " + view);
+        //log.info("onEndCallClicked " + view);
 
         finish();
     }
 
-    public void onBtnNClicked(View view) {
+    /*public void onBtnNClicked(View view) {
         if (mVideoPreProcessing == null) {
             mVideoPreProcessing = new VideoPreProcessing();
         }
@@ -327,10 +324,10 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
             iv.setTag(true);
             iv.setColorFilter(getResources().getColor(R.color.agora_blue), PorterDuff.Mode.MULTIPLY);
         }
-    }
+    }*/
 
     public void onVoiceChatClicked(View view) {
-        log.info("onVoiceChatClicked " + view + " " + mUidsList.size() + " video_status: " + mVideoMuted + " audio_status: " + mAudioMuted);
+        //log.info("onVoiceChatClicked " + view + " " + mUidsList.size() + " video_status: " + mVideoMuted + " audio_status: " + mAudioMuted);
         if (mUidsList.size() == 0) {
             return;
         }
@@ -338,7 +335,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
         SurfaceView surfaceV = getLocalView();
         ViewParent parent;
         if (surfaceV == null || (parent = surfaceV.getParent()) == null) {
-            log.warn("onVoiceChatClicked " + view + " " + surfaceV);
+            //log.warn("onVoiceChatClicked " + view + " " + surfaceV);
             return;
         }
 
@@ -389,7 +386,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
             if (bigBgUser.mUid == targetUid) { // big background is target view
                 mGridVideoViewContainer.notifyUiChanged(mUidsList, targetUid, status, null);
             } else { // find target view in small video view list
-                log.warn("SmallVideoViewAdapter call notifyUiChanged " + mUidsList + " " + (bigBgUser.mUid & 0xFFFFFFFFL) + " target: " + (targetUid & 0xFFFFFFFFL) + "==" + targetUid + " " + status);
+                //log.warn("SmallVideoViewAdapter call notifyUiChanged " + mUidsList + " " + (bigBgUser.mUid & 0xFFFFFFFFL) + " target: " + (targetUid & 0xFFFFFFFFL) + "==" + targetUid + " " + status);
                 mSmallVideoViewAdapter.notifyUiChanged(mUidsList, bigBgUser.mUid, status, null);
             }
         }
@@ -412,7 +409,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
     }
 
     public void onVoiceMuteClicked(View view) {
-        log.info("onVoiceMuteClicked " + view + " " + mUidsList.size() + " video_status: " + mVideoMuted + " audio_status: " + mAudioMuted);
+        //log.info("onVoiceMuteClicked " + view + " " + mUidsList.size() + " video_status: " + mVideoMuted + " audio_status: " + mAudioMuted);
         if (mUidsList.size() == 0) {
             return;
         }
@@ -457,11 +454,11 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
                 rtcEngine().setupRemoteVideo(new VideoCanvas(surfaceV, VideoCanvas.RENDER_MODE_HIDDEN, uid));
 
                 if (useDefaultLayout) {
-                    log.debug("doRenderRemoteUi LAYOUT_TYPE_DEFAULT " + (uid & 0xFFFFFFFFL));
+                    //log.debug("doRenderRemoteUi LAYOUT_TYPE_DEFAULT " + (uid & 0xFFFFFFFFL));
                     switchToDefaultVideoView();
                 } else {
                     int bigBgUid = mSmallVideoViewAdapter == null ? uid : mSmallVideoViewAdapter.getExceptedUid();
-                    log.debug("doRenderRemoteUi LAYOUT_TYPE_SMALL " + (uid & 0xFFFFFFFFL) + " " + (bigBgUid & 0xFFFFFFFFL));
+                    //log.debug("doRenderRemoteUi LAYOUT_TYPE_SMALL " + (uid & 0xFFFFFFFFL) + " " + (bigBgUid & 0xFFFFFFFFL));
                     switchToSmallVideoView(bigBgUid);
                 }
             }
@@ -470,7 +467,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
 
     @Override
     public void onJoinChannelSuccess(String channel, final int uid, int elapsed) {
-        log.debug("onJoinChannelSuccess " + channel + " " + (uid & 0xFFFFFFFFL) + " " + elapsed);
+        //log.debug("onJoinChannelSuccess " + channel + " " + (uid & 0xFFFFFFFFL) + " " + elapsed);
 
         runOnUiThread(new Runnable() {
             @Override
@@ -620,7 +617,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
     }
 
     private void requestRemoteStreamType(final int currentHostCount) {
-        log.debug("requestRemoteStreamType " + currentHostCount);
+        //log.debug("requestRemoteStreamType " + currentHostCount);
     }
 
     private void doRemoveRemoteUi(final int uid) {
@@ -641,7 +638,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
                     bigBgUid = mSmallVideoViewAdapter.getExceptedUid();
                 }
 
-                log.debug("doRemoveRemoteUi " + (uid & 0xFFFFFFFFL) + " " + (bigBgUid & 0xFFFFFFFFL) + " " + mLayoutType);
+                //log.debug("doRemoveRemoteUi " + (uid & 0xFFFFFFFFL) + " " + (bigBgUid & 0xFFFFFFFFL) + " " + mLayoutType);
 
                 if (mLayoutType == LAYOUT_TYPE_DEFAULT || uid == bigBgUid) {
                     switchToDefaultVideoView();
@@ -707,7 +704,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
         }
         recycler.setHasFixedSize(true);
 
-        log.debug("bindToSmallVideoView " + twoWayVideoCall + " " + (exceptUid & 0xFFFFFFFFL));
+        //log.debug("bindToSmallVideoView " + twoWayVideoCall + " " + (exceptUid & 0xFFFFFFFFL));
 
         if (twoWayVideoCall) {
             recycler.setLayoutManager(new RtlLinearLayoutManager(getApplicationContext(), RtlLinearLayoutManager.HORIZONTAL, false));
@@ -729,7 +726,7 @@ public class VideoChatActivity extends VideoBaseActivity implements AGEventHandl
     }
 
     public void notifyHeadsetPlugged(final int routing) {
-        log.info("notifyHeadsetPlugged " + routing + " " + mVideoMuted);
+        //log.info("notifyHeadsetPlugged " + routing + " " + mVideoMuted);
 
         mAudioRouting = routing;
 

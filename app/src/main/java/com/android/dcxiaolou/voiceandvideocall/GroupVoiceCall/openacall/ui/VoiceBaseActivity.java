@@ -25,13 +25,11 @@ import com.android.dcxiaolou.voiceandvideocall.GroupVoiceCall.openacall.model.Vo
 import com.android.dcxiaolou.voiceandvideocall.GroupVoiceCall.propeller.Constant;
 
 import io.agora.rtc.RtcEngine;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
 public abstract class VoiceBaseActivity extends AppCompatActivity {
-    private final static Logger log = LoggerFactory.getLogger(VoiceBaseActivity.class);
+    //private final static Logger log = LoggerFactory.getLogger(VoiceBaseActivity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +86,7 @@ public abstract class VoiceBaseActivity extends AppCompatActivity {
     }
 
     public boolean checkSelfPermission(String permission, int requestCode) {
-        log.debug("checkSelfPermission " + permission + " " + requestCode);
+        //log.debug("checkSelfPermission " + permission + " " + requestCode);
         if (ContextCompat.checkSelfPermission(this,
                 permission)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -133,7 +131,7 @@ public abstract class VoiceBaseActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[], @NonNull int[] grantResults) {
-        log.debug("onRequestPermissionsResult " + requestCode + " " + Arrays.toString(permissions) + " " + Arrays.toString(grantResults));
+        //log.debug("onRequestPermissionsResult " + requestCode + " " + Arrays.toString(permissions) + " " + Arrays.toString(grantResults));
         switch (requestCode) {
             case ConstantApp.PERMISSION_REQ_ID_RECORD_AUDIO: {
                 if (grantResults.length > 0

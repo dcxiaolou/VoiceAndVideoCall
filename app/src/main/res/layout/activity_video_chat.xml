@@ -99,7 +99,7 @@
 
                 </LinearLayout>
 
-                <ImageView
+                <!--<ImageView
                     android:layout_width="54dp"
                     android:layout_height="match_parent"
                     android:scaleType="center"
@@ -107,7 +107,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/btn_filter"
-                    android:onClick="onBtnNClicked" />
+                    android:onClick="onBtnNClicked" />-->
 
             </RelativeLayout>
 

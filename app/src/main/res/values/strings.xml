@@ -3,15 +3,15 @@
 
     <string name="label_settings">Settings</string>
 
-    <string name="agora_app_id">dbddb93a2dd4477ca4235c9c0497d96e</string>
+    <string name="agora_app_id">55abb1786bba428fad87f3f2e3c6716d</string>
 
-    <string name="msg_welcome_message">Welcome to Open Voice Call!</string>
+    <string name="msg_welcome_message">欢迎体验心里的声音——音视频通话功能</string>
 
-    <string name="label_channel_name_hint">Channel name</string>
+    <string name="label_channel_name_hint">请输入频道名称(请勿输入中文)</string>
 
-    <string name="label_encryption_key_hint">Encryption key</string>
+    <string name="label_encryption_key_hint">请输入加密密钥</string>
 
-    <string name="label_join">Join</string>
+    <string name="label_join">进入频道</string>
 
     <string name="label_confirm">Confirm</string>
 

@@ -20,15 +20,12 @@ import com.android.dcxiaolou.voiceandvideocall.GroupVoiceCall.openacall.model.AG
 import com.android.dcxiaolou.voiceandvideocall.GroupVoiceCall.openacall.model.ConstantApp;
 import com.android.dcxiaolou.voiceandvideocall.R;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import io.agora.rtc.IRtcEngineEventHandler;
 import io.agora.rtc.RtcEngine;
 
 public class VoiceChatActivity extends VoiceBaseActivity implements AGEventHandler {
 
-    private final static Logger log = LoggerFactory.getLogger(VoiceChatActivity.class);
+    //private final static Logger log = LoggerFactory.getLogger(VoiceChatActivity.class);
 
     private volatile boolean mAudioMuted = false;
 
@@ -139,7 +136,7 @@ public class VoiceChatActivity extends VoiceBaseActivity implements AGEventHandl
     }
 
     public void onSwitchSpeakerClicked(View view) {
-        log.info("onSwitchSpeakerClicked " + view + " " + mAudioMuted + " " + mAudioRouting);
+        //log.info("onSwitchSpeakerClicked " + view + " " + mAudioMuted + " " + mAudioRouting);
 
         RtcEngine rtcEngine = rtcEngine();
         rtcEngine.setEnableSpeakerphone(mAudioRouting != 3);
@@ -158,7 +155,7 @@ public class VoiceChatActivity extends VoiceBaseActivity implements AGEventHandl
     }
 
     public void onEndCallClicked(View view) {
-        log.info("onEndCallClicked " + view);
+        //log.info("onEndCallClicked " + view);
 
         quitCall();
     }
@@ -167,7 +164,7 @@ public class VoiceChatActivity extends VoiceBaseActivity implements AGEventHandl
     public void onBackPressed() {
         super.onBackPressed();
 
-        log.info("onBackPressed");
+        //log.info("onBackPressed");
 
         quitCall();
     }
@@ -180,7 +177,7 @@ public class VoiceChatActivity extends VoiceBaseActivity implements AGEventHandl
     }
 
     public void onVoiceMuteClicked(View view) {
-        log.info("onVoiceMuteClicked " + view + " audio_status: " + mAudioMuted);
+        //log.info("onVoiceMuteClicked " + view + " audio_status: " + mAudioMuted);
 
         RtcEngine rtcEngine = rtcEngine();
         rtcEngine.muteLocalAudioStream(mAudioMuted = !mAudioMuted);
@@ -197,7 +194,7 @@ public class VoiceChatActivity extends VoiceBaseActivity implements AGEventHandl
     @Override
     public void onJoinChannelSuccess(String channel, final int uid, int elapsed) {
         String msg = "onJoinChannelSuccess " + channel + " " + (uid & 0xFFFFFFFFL) + " " + elapsed;
-        log.debug(msg);
+        //log.debug(msg);
 
         notifyMessageChanged(msg);
 
@@ -216,7 +213,7 @@ public class VoiceChatActivity extends VoiceBaseActivity implements AGEventHandl
     @Override
     public void onUserOffline(int uid, int reason) {
         String msg = "onUserOffline " + (uid & 0xFFFFFFFFL) + " " + reason;
-        log.debug(msg);
+        //log.debug(msg);
 
         notifyMessageChanged(msg);
 
@@ -284,7 +281,7 @@ public class VoiceChatActivity extends VoiceBaseActivity implements AGEventHandl
                     notifyMessageChanged(volumeMsg);
 
                     if ((System.currentTimeMillis() / 1000) % 10 == 0) {
-                        log.debug(volumeMsg);
+                        //log.debug(volumeMsg);
                     }
                 }
                 break;
@@ -318,7 +315,7 @@ public class VoiceChatActivity extends VoiceBaseActivity implements AGEventHandl
     }
 
     public void notifyHeadsetPlugged(final int routing) {
-        log.info("notifyHeadsetPlugged " + routing);
+        //log.info("notifyHeadsetPlugged " + routing);
 
         mAudioRouting = routing;
 

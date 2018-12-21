@@ -25,7 +25,7 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="@string/msg_welcome_message"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/channel_name"
@@ -36,6 +36,7 @@
                 android:layout_marginTop="40dp"
                 android:digits="@string/legal_channel_name_characters"
                 android:gravity="center"
+                android:textSize="14sp"
                 android:hint="@string/label_channel_name_hint"
                 android:inputType="text" />
 
@@ -57,6 +58,7 @@
                     android:digits="@string/legal_channel_name_characters"
                     android:gravity="center"
                     android:hint="@string/label_encryption_key_hint"
+                    android:textSize="12sp"
                     android:inputType="text" />
 
                 <Spinner

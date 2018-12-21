@@ -14,16 +14,13 @@ import com.android.dcxiaolou.voiceandvideocall.GroupVideoCall.propeller.UserStat
 import com.android.dcxiaolou.voiceandvideocall.GroupVideoCall.propeller.VideoInfoData;
 import com.android.dcxiaolou.voiceandvideocall.R;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public abstract class VideoViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private final static Logger log = LoggerFactory.getLogger(VideoViewAdapter.class);
+    //private final static Logger log = LoggerFactory.getLogger(VideoViewAdapter.class);
 
     protected final LayoutInflater mInflater;
     protected final Context mContext;
@@ -94,7 +91,7 @@ public abstract class VideoViewAdapter extends RecyclerView.Adapter<RecyclerView
 
         final UserStatusData user = mUsers.get(position);
 
-        log.debug("onBindViewHolder " + position + " " + user + " " + myHolder + " " + myHolder.itemView + " " + mDefaultChildItem);
+        //log.debug("onBindViewHolder " + position + " " + user + " " + myHolder + " " + myHolder.itemView + " " + mDefaultChildItem);
 
         FrameLayout holderView = (FrameLayout) myHolder.itemView;
 
@@ -122,7 +119,7 @@ public abstract class VideoViewAdapter extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public int getItemCount() {
-        log.debug("getItemCount " + mUsers.size());
+        //log.debug("getItemCount " + mUsers.size());
         return mUsers.size();
     }
 

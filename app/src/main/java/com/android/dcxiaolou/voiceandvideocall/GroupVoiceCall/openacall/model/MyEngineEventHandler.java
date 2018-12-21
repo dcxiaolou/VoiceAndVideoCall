@@ -2,9 +2,6 @@ package com.android.dcxiaolou.voiceandvideocall.GroupVoiceCall.openacall.model;
 
 import android.content.Context;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -32,7 +29,6 @@ public class MyEngineEventHandler {
     }
 
     final IRtcEngineEventHandler mRtcEventHandler = new IRtcEngineEventHandler() {
-        private final Logger log = LoggerFactory.getLogger(this.getClass());
 
         @Override
         public void onUserJoined(int uid, int elapsed) {
@@ -40,7 +36,7 @@ public class MyEngineEventHandler {
 
         @Override
         public void onUserOffline(int uid, int reason) {
-            log.debug("onUserOffline " + (uid & 0xFFFFFFFFL) + " " + reason);
+            //log.debug("onUserOffline " + (uid & 0xFFFFFFFFL) + " " + reason);
 
             // FIXME this callback may return times
             Iterator<AGEventHandler> it = mEventHandlerList.keySet().iterator();
@@ -76,12 +72,12 @@ public class MyEngineEventHandler {
 
         @Override
         public void onLastmileQuality(int quality) {
-            log.debug("onLastmileQuality " + quality);
+            //log.debug("onLastmileQuality " + quality);
         }
 
         @Override
         public void onError(int error) {
-            log.debug("onError " + error);
+            //log.debug("onError " + error);
 
             Iterator<AGEventHandler> it = mEventHandlerList.keySet().iterator();
             while (it.hasNext()) {
@@ -101,7 +97,7 @@ public class MyEngineEventHandler {
 
         @Override
         public void onConnectionLost() {
-            log.debug("onConnectionLost");
+            //log.debug("onConnectionLost");
 
             Iterator<AGEventHandler> it = mEventHandlerList.keySet().iterator();
             while (it.hasNext()) {
@@ -112,7 +108,7 @@ public class MyEngineEventHandler {
 
         @Override
         public void onConnectionInterrupted() {
-            log.debug("onConnectionInterrupted");
+            //log.debug("onConnectionInterrupted");
 
             Iterator<AGEventHandler> it = mEventHandlerList.keySet().iterator();
             while (it.hasNext()) {
@@ -123,7 +119,7 @@ public class MyEngineEventHandler {
 
         @Override
         public void onJoinChannelSuccess(String channel, int uid, int elapsed) {
-            log.debug("onJoinChannelSuccess " + channel + " " + (uid & 0xFFFFFFFFL) + " " + elapsed);
+            //log.debug("onJoinChannelSuccess " + channel + " " + (uid & 0xFFFFFFFFL) + " " + elapsed);
 
             mConfig.mUid = uid;
 
@@ -135,16 +131,16 @@ public class MyEngineEventHandler {
         }
 
         public void onRejoinChannelSuccess(String channel, int uid, int elapsed) {
-            log.debug("onRejoinChannelSuccess " + channel + " " + (uid & 0xFFFFFFFFL) + " " + elapsed);
+            //log.debug("onRejoinChannelSuccess " + channel + " " + (uid & 0xFFFFFFFFL) + " " + elapsed);
         }
 
         public void onWarning(int warn) {
-            log.debug("onWarning " + warn);
+            //log.debug("onWarning " + warn);
         }
 
         @Override
         public void onAudioRouteChanged(int routing) {
-            log.debug("onAudioRouteChanged " + routing);
+            //log.debug("onAudioRouteChanged " + routing);
 
             Iterator<AGEventHandler> it = mEventHandlerList.keySet().iterator();
             while (it.hasNext()) {

@@ -13,16 +13,13 @@ import android.util.Log;
 
 import com.android.dcxiaolou.voiceandvideocall.R;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.File;
 
 import io.agora.rtc.Constants;
 import io.agora.rtc.RtcEngine;
 
 public class VoiceWorkerThread extends Thread {
-    private final static Logger log = LoggerFactory.getLogger(VoiceWorkerThread.class);
+    private final static String TAG = "VoiceWorkerThread";
 
     private final Context mContext;
 
@@ -47,7 +44,7 @@ public class VoiceWorkerThread extends Thread {
         @Override
         public void handleMessage(Message msg) {
             if (this.mVoiceWorkerThread == null) {
-                log.warn("handler is already released! " + msg.what);
+                Log.w(TAG, "handler is already released! " + msg.what);
                 return;
             }
 
@@ -78,13 +75,13 @@ public class VoiceWorkerThread extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            log.debug("wait for " + VoiceWorkerThread.class.getSimpleName());
+            Log.d(TAG, "wait for " + VoiceWorkerThread.class.getSimpleName());
         }
     }
 
     @Override
     public void run() {
-        log.trace("start to run");
+        Log.d(TAG, "start to run");
         Looper.prepare();
 
         mWorkerHandler = new WorkerThreadHandler(this);
@@ -101,7 +98,7 @@ public class VoiceWorkerThread extends Thread {
 
     public final void joinChannel(final String channel, int uid) {
         if (Thread.currentThread() != this) {
-            log.warn("joinChannel() - worker thread asynchronously " + channel + " " + uid);
+            Log.w(TAG, "joinChannel() - worker thread asynchronously " + channel + " " + uid);
             Message envelop = new Message();
             envelop.what = ACTION_WORKER_JOIN_CHANNEL;
             envelop.obj = new String[]{channel};
@@ -115,12 +112,12 @@ public class VoiceWorkerThread extends Thread {
 
         mEngineConfig.mChannel = channel;
 
-        log.debug("joinChannel " + channel + " " + uid);
+        Log.d(TAG, "joinChannel " + channel + " " + uid);
     }
 
     public final void leaveChannel(String channel) {
         if (Thread.currentThread() != this) {
-            log.warn("leaveChannel() - worker thread asynchronously " + channel);
+            Log.w(TAG, "leaveChannel() - worker thread asynchronously " + channel);
             Message envelop = new Message();
             envelop.what = ACTION_WORKER_LEAVE_CHANNEL;
             envelop.obj = channel;
@@ -133,7 +130,7 @@ public class VoiceWorkerThread extends Thread {
         }
 
         mEngineConfig.reset();
-        log.debug("leaveChannel " + channel);
+        Log.d(TAG, "leaveChannel " + channel);
     }
 
     private EngineConfig mEngineConfig;
@@ -159,7 +156,7 @@ public class VoiceWorkerThread extends Thread {
             try {
                 mRtcEngine = RtcEngine.create(mContext, appId, mEngineEventHandler.mRtcEventHandler);
             } catch (Exception e) {
-                log.error(Log.getStackTraceString(e));
+                Log.e(TAG, Log.getStackTraceString(e));
                 throw new RuntimeException("NEED TO check rtc sdk init fatal error\n" + Log.getStackTraceString(e));
             }
             mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_COMMUNICATION);
@@ -184,7 +181,7 @@ public class VoiceWorkerThread extends Thread {
      */
     public final void exit() {
         if (Thread.currentThread() != this) {
-            log.warn("exit() - exit app thread asynchronously");
+            Log.w(TAG, "exit() - exit app thread asynchronously");
             mWorkerHandler.sendEmptyMessage(ACTION_WORKER_THREAD_QUIT);
             return;
         }
@@ -193,14 +190,14 @@ public class VoiceWorkerThread extends Thread {
 
         // TODO should remove all pending(read) messages
 
-        log.debug("exit() > start");
+        Log.d(TAG, "exit() > start");
 
         // exit thread looper
         Looper.myLooper().quit();
 
         mWorkerHandler.release();
 
-        log.debug("exit() > end");
+        Log.d(TAG, "exit() > end");
     }
 
     public VoiceWorkerThread(Context context) {

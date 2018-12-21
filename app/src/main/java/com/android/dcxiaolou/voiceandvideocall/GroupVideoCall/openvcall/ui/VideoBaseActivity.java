@@ -31,16 +31,13 @@ import com.android.dcxiaolou.voiceandvideocall.GroupVideoCall.openvcall.model.My
 import com.android.dcxiaolou.voiceandvideocall.GroupVideoCall.openvcall.model.VideoWorkerThread;
 import com.android.dcxiaolou.voiceandvideocall.GroupVideoCall.propeller.Constant;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.Arrays;
 
 import io.agora.rtc.RtcEngine;
 
 
 public abstract class VideoBaseActivity extends AppCompatActivity {
-    private final static Logger log = LoggerFactory.getLogger(VideoBaseActivity.class);
+    //private final static Logger log = LoggerFactory.getLogger(VideoBaseActivity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,14 +114,14 @@ public abstract class VideoBaseActivity extends AppCompatActivity {
                 public void run() {
                     InputMethodManager mgr = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     boolean result = mgr.showSoftInput(v, InputMethodManager.SHOW_FORCED);
-                    log.debug("openIME " + focus + " " + result);
+                    //log.debug("openIME " + focus + " " + result);
                 }
             });
         }
     }
 
     public boolean checkSelfPermission(String permission, int requestCode) {
-        log.debug("checkSelfPermission " + permission + " " + requestCode);
+        //log.debug("checkSelfPermission " + permission + " " + requestCode);
         if (ContextCompat.checkSelfPermission(this,
                 permission)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -169,7 +166,7 @@ public abstract class VideoBaseActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[], @NonNull int[] grantResults) {
-        log.debug("onRequestPermissionsResult " + requestCode + " " + Arrays.toString(permissions) + " " + Arrays.toString(grantResults));
+        //log.debug("onRequestPermissionsResult " + requestCode + " " + Arrays.toString(permissions) + " " + Arrays.toString(grantResults));
         switch (requestCode) {
             case ConstantApp.PERMISSION_REQ_ID_RECORD_AUDIO: {
                 if (grantResults.length > 0

@@ -6,20 +6,17 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.HashMap;
 
 public class SmallVideoViewAdapter extends VideoViewAdapter {
-    private final static Logger log = LoggerFactory.getLogger(SmallVideoViewAdapter.class);
+    //private final static Logger log = LoggerFactory.getLogger(SmallVideoViewAdapter.class);
 
     private int mExceptedUid;
 
     public SmallVideoViewAdapter(Activity activity, int localUid, int exceptedUid, HashMap<Integer, SurfaceView> uids, VideoViewEventListener listener) {
         super(activity, localUid, uids, listener);
         mExceptedUid = exceptedUid;
-        log.debug("SmallVideoViewAdapter " + (mLocalUid & 0xFFFFFFFFL) + " " + (mExceptedUid & 0xFFFFFFFFL));
+        //log.debug("SmallVideoViewAdapter " + (mLocalUid & 0xFFFFFFFFL) + " " + (mExceptedUid & 0xFFFFFFFFL));
     }
 
     @Override
@@ -41,7 +38,7 @@ public class SmallVideoViewAdapter extends VideoViewAdapter {
 
         mExceptedUid = uidExcepted;
 
-        log.debug("notifyUiChanged " + (mLocalUid & 0xFFFFFFFFL) + " " + (uidExcepted & 0xFFFFFFFFL) + " " + uids + " " + status + " " + volume);
+        //log.debug("notifyUiChanged " + (mLocalUid & 0xFFFFFFFFL) + " " + (uidExcepted & 0xFFFFFFFFL) + " " + uids + " " + status + " " + volume);
         VideoViewAdapterUtil.composeDataItem(mUsers, uids, mLocalUid, status, volume, mVideoInfo, uidExcepted);
 
         notifyDataSetChanged();

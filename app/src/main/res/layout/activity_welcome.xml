@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:textSize="20sp"
-        android:text="音频通话"/>
+        android:text="音视频通话"/>
 
     <TextView
         android:layout_width="wrap_content"
